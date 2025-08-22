@@ -5,28 +5,14 @@ from datetime import datetime
 from io import BytesIO
 from docx import Document
 import unicodedata
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-import sys # <--- Adicione esta linha (Import sys)
-
-# Adicione ESTAS DUAS LINHAS para configurar a porta
-# Isso cria uma variável de ambiente que o Streamlit irá ler
-os.environ["STREAMLIT_SERVER_PORT"] = "8502" # Tentar a porta 8502 (ou outra, se preferir)
+from docx.enum.text import WD_ALIGN_PARAGRAPH # Importa para justificar o texto
 
 # --- Configurações Iniciais ---
-# Verifica se o aplicativo está rodando como um executável PyInstaller
-if getattr(sys, 'frozen', False):
-    # Se sim, o caminho base é o diretório temporário onde o PyInstaller extrai os arquivos
-    base_path = sys._MEIPASS
-else:
-    # Se não, está rodando em ambiente Python normal, o caminho base é o diretório atual do script
-    base_path = os.path.abspath(".")
-
-# Ajusta DATA_DIR para usar o base_path
-DATA_DIR = os.path.join(base_path, "data") # <--- AQUI ESTÁ A MUDANÇA PRINCIPAL
+DATA_DIR = "data"
 USERS_FILE = os.path.join(DATA_DIR, "users.json")
 PARECERES_FILE = os.path.join(DATA_DIR, "pareceres.json")
 SCHOOL_NAME = "ESCOLA MUNICIPAL DE EDUCAÇÃO FUNDAMENTAL ELESBÃO BARBOSA DE CARVALHO"
-COORDENADOR_NAME = "NOME DO COORDENADOR AQUI"
+COORDENADOR_NAME = "NOME DO COORDENADOR AQUI" # Adicionado o nome do coordenador
 
 # Lista de Nomes de Alunos (mantida a mesma)
 STUDENT_NAMES = [
